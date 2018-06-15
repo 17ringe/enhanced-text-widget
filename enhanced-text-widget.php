@@ -105,12 +105,13 @@ class EnhancedTextWidget extends WP_Widget {
      * Setup the widget admin form
      */
     function form( $instance ) {
-        $instance = wp_parse_args( (array) $instance, array(
+        $defaults = apply_filters('widget_enhanced_defaults', array(
             'title' => '',
             'titleUrl' => '',
             'cssClass' => '',
             'text' => ''
         ));
+        $instance = wp_parse_args( (array) $instance, $defaults);
         $title = $instance['title'];
         $titleUrl = $instance['titleUrl'];
         $cssClass = $instance['cssClass'];
